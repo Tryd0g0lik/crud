@@ -1,50 +1,50 @@
-  {
-    "name": "grud-backend",
-    "version": "0.4.1",
-    "main": "./src/server/index.ts",
-    "author": " Tryd0g0lik",
-    "license": "MIT",
-    "private": false,
-    "engines": {
-      "node": ">=18",
-      "yarn": ">=1.22.21"
-    },
-    "dependencies": {
-      "eslint-config-airbnb-typescript": "^17.1.0",
-      "package.json": "^2.0.1"
-    },
-    "devDependencies": {
-      "@koa/cors": "^5.0.0",
-      "@types/koa-logger": "^3.1.5",
-      "@webpack-cli/generators": "^3.0.7",
-      "bufferutil": "^4.0.7",
-      "copy-webpack-plugin": "^11.0.0",
-      "koa": "^2.14.2",
-      "koa-better-router": "^2.1.1",
-      "koa-body": "^6.0.1",
-      "koa-logger": "^3.2.1",
-      "mock-socket": "^9.3.1",
-      "path": "^0.12.7",
-      "prettier": "^3.0.3",
-      "ts-loader": "^9.5.1",
-      "tsc": "^2.0.4",
-      "typescript": "^5.2.2",
-      "utf-8-validate": "^6.0.3",
-      "uuid": "^9.0.1",
-      "webpack": "^5.88.2",
-      "webpack-cli": "^5.1.4",
-      "webpack-merge": "^5.9.0",
-      "ws": "^8.15.1"
-    },
-    "description": "0.4.2 - IDE fields; 0.4.1 - There is DELETE function for a position remove;",
-    "scripts": {
-      "build": "webpack --mode=production --config ./webpack.config.js",
-      "build:dev2": "webpack --mode=development --config ./webpack.config.js",
-      "build:dev": "yarn tsc && webpack",
-      "build:prod": "webpack ",
-      "build:render": "yarn add package.json && npx tsc && yarn tsc && webpack",
-      "watch": "webpack --watch",
-      "start": "node ../../dist/server/index.js localhost 7070"
-    },
-    "files": []
-  }
+{
+  "name": "crud-backend",
+  "version": "0.4.1",
+  "main": "./src/server/index.ts",
+  "author": " Tryd0g0lik",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=18",
+    "yarn": ">=1.22.21"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "package.json": "^2.0.1"
+  },
+  "devDependencies": {
+    "@koa/cors": "^5.0.0",
+    "@types/koa-logger": "^3.1.5",
+    "@webpack-cli/generators": "^3.0.7",
+    "bufferutil": "^4.0.7",
+    "copy-webpack-plugin": "^11.0.0",
+    "koa": "^2.14.2",
+    "koa-better-router": "^2.1.1",
+    "koa-body": "^6.0.1",
+    "koa-logger": "^3.2.1",
+    "mock-socket": "^9.3.1",
+    "path": "^0.12.7",
+    "prettier": "^3.0.3",
+    "ts-loader": "^9.5.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.2.2",
+    "utf-8-validate": "^6.0.3",
+    "uuid": "^9.0.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.9.0",
+    "ws": "^8.15.1"
+  },
+  "description": "0.4.2 - IDE fields; 0.4.1 - There is DELETE function for a position remove;",
+  "scripts": {
+    "build": "webpack --mode=production --config ./webpack.config.js",
+    "build:dev2": "webpack --mode=development --config ./webpack.config.js",
+    "build:dev": "yarn tsc && webpack",
+    "build:prod": "webpack ",
+    "build:render": "yarn add package.json && npx tsc && yarn tsc && webpack",
+    "watch": "webpack --watch",
+    "start": "node ../../dist/server/index.js localhost 7070"
+  },
+  "files": []
+}

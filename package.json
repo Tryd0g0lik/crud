@@ -1,5 +1,5 @@
-  {
-  "name": "grud",
+{
+  "name": "crud",
   "main": "./src/index.ts",
   "version": "0.1.0",
   "private": true,
@@ -14,7 +14,7 @@
   },
   "workspaces": [
     "./src/frontend",
-    "./src/backand"
+    "./src/backend"
   ],
   "scripts": {
     "build:dev": "webpack --mode=development --config ./webpack.config.js",

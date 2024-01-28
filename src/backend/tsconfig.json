@@ -11,13 +11,12 @@
   "exclude": [
     "node_modules",
     "directory",
-    "dist",
-    "../../archive"
+    "dist"
   ],
   "files": [
-    ".\\src\\server\\index.ts",
-    ".\\src\\server\\web-socket\\index.ts"
+    ".\\src\\server\\index.ts"
   ]
+  // ".\\src\\server\\web-socket\\index.ts"
   // "include": [
   //   "../../dist/server"
   // ]

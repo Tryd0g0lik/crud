@@ -1,0 +1,8 @@
+.update-button button {
+  width: 38px;
+  height: 37px;
+  border-radius: 50%;
+  border: solid 1px #000;
+  background: url("../../pic/update.png") no-repeat;
+  background-position: -6px -6px;
+}

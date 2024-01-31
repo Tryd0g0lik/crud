@@ -1,4 +1,5 @@
 import React, { JSX, MouseEventHandler, useEffect, useState, useCallback } from "react";
+import { WSocket } from "../../functions/websocats.ts";
 import "./Textarea.css";
 interface Child {
   children: JSX.Element
@@ -7,7 +8,21 @@ interface Child {
 export default function TextFC({ children }: Child): JSX.Element {
   let str = "";
   const [code, setCode] = useState("");
-  const handleKeyPress = useCallback((event: any) => {
+  function Ws(url: string): void {
+    let ws: any;
+    if ((ws !== true) || ((ws === true) &&
+      ((ws.readyState < 1) &&
+        (ws.readyState > 1)))) {
+      ws = new WSocket(url);
+    }
+    const sendersStr = { open: [], data: [{ textarea: str }], removes: [] };
+    ws.onSend = sendersStr;
+  }
+
+  /**
+   * Контекст textarea
+   */
+  const handlerKeyBoardPress = useCallback((event: any) => {
     if ((event.key as string).includes("Backspace")) {
       str = str.slice(0, -1);
       setCode(str);
@@ -35,17 +50,30 @@ export default function TextFC({ children }: Child): JSX.Element {
       setCode(str);
     }
   }, []);
+
+  /**
+   * обработчик нажатой кнопки для отправки textarea на сервер
+   */
+  const handlerSendClick = (): void => {
+    Ws("ws://localhost:7000");
+  };
+
   useEffect(() => {
-    const textareaDiv = document.querySelector(".textarea");
-    if ((textareaDiv === null) || (textareaDiv === undefined)) {
-      return;
+    // const textareaDiv = document.querySelector(".textarea");
+    const sendDiv = document.querySelector(".send"); /* кнопка для отправки textarea на сервер */
+    // if ((textareaDiv === null) || (textareaDiv === undefined)) {
+    //   n;
+    // };
+    if ((sendDiv !== null) && (sendDiv !== undefined)) {
+      /* прослушка кнопки для отправки textarea на сервер */
+      sendDiv.addEventListener("click", handlerSendClick);
     };
-    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("keydown", handlerKeyBoardPress);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener("keydown", handlerKeyBoardPress);
     };
-  }, [handleKeyPress]);
+  }, [handlerKeyBoardPress]);
 
   const handlerMouse: MouseEventHandler<HTMLDivElement> = (e): void => {
     const divElement = e.target as HTMLElement;

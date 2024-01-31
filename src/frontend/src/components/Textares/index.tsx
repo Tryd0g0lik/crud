@@ -43,10 +43,10 @@ export default function TextFC({ children }: Child): JSX.Element {
     } else if ((event.key as string).includes("Enter")) {
       str = str + "\r\n";
     } else if ((event.key as string).includes("HomeDelete") || (event.key as string).includes("Delete")) {
-      str = "";
+      str = "".slice(0);
       setCode("");
     } else {
-      str += (event.key as string);
+      str += (event.key as string).slice(0);
       setCode(str);
     }
   }, []);

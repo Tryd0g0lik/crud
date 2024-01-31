@@ -28,6 +28,7 @@ export default function TextFC({ children }: Child): JSX.Element {
     } else if ((event.key as string).includes("Enter")) {
       str = str + "\r\n";
     } else if ((event.key as string).includes("HomeDelete") || (event.key as string).includes("Delete")) {
+      str = "";
       setCode("");
     } else {
       str += (event.key as string);

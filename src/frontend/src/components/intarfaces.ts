@@ -30,5 +30,3 @@ export interface Str {
   nameCall?: string
   Call?: (classnameCall: Classname, nameCall: Name) => React.JSX.Element
 }
-
-

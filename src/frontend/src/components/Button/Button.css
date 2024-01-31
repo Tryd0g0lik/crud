@@ -1,8 +1,42 @@
-.update-button button {
+.update-button,
+.unmounting,
+.send {
+  display: inline-block;
+
+}
+
+
+.update-button button,
+.unmounting button,
+.send button {
   width: 38px;
   height: 37px;
   border-radius: 50%;
   border: solid 1px #000;
-  background: url("../../pic/update.png") no-repeat;
-  background-position: -6px -6px;
+  background: url("../../pic/synchronized38.png") no-repeat;
+    background-position: -2px 0px;
+  }
+  
+  .unmounting,
+  .send {
+    position: absolute;
+    right: -15px;
+    top: -18px;
+  }
+  
+  .unmounting button {
+    background: url("../../pic/close25.png") no-repeat;
+    background-position: 5px 4px;
+    z-index: 2;
+  }
+  
+  .send {
+    right: 10px;
+    top: 74%;
+  
+  }
+  
+  .send button {
+    background: url("../../pic/send38.png") no-repeat;
+    background-position: 0px -1px;
 }

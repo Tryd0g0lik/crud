@@ -7,5 +7,5 @@ export default function ButtonFC({ classname, name }: Str): JSX.Element {
     <div className={classname}>
       <button type="submit">{name}</button>
     </div>
-  )
+  );
 }

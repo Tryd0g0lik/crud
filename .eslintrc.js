@@ -91,7 +91,8 @@ module.exports = {
     "import/no-extraneous-dependencies": "off",
     "prefer-const": "off",
     "no-useless-escape": "off",
-    "@typescript-eslint/consistent-type-imports": "off"
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/no-extra-semi": "off"
   },
   "overrides": [
     // {

@@ -1,0 +1,19 @@
+.textarea {
+  display: inline-flex;
+  position: relative;
+  border: solid 1px #000;
+  width: 100%;
+  max-width: 360px;
+  min-height: 180px;
+  background-color: #fff;
+}
+
+textarea {
+
+  position: absolute;
+  border: 0;
+  width: 0.1px;
+  min-height: 0.1px;
+  max-height: 0.1px;
+  z-index: -2;
+}

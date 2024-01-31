@@ -1,0 +1,13 @@
+body {
+  padding-left: 28px;
+}
+
+.content,
+.h3 {
+  padding-top: 20px;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 400;
+}

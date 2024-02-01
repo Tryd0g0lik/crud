@@ -9,7 +9,9 @@ module.exports = (wss: any, WS: any): any => {
       // const url = req.url.slice(0);
       let messJson = JSON.parse(mess);
       for (let line in messJson) {
-        if ((messJson.line).length > 0) {
+        console.log("[messJson.line]: ", messJson.line, "line: ", line, "messJson: ", messJson);
+        console.log("[messJson[line]]: ", messJson[line], ", Object.entries: ", Object.entries(messJson), ", messJson: ", messJson);
+        if ((messJson[line]).length > 0) {
           const ind = keys.indAdd();
           if ((line.includes("data")) && ((typeof ind).includes("string"))) {
             JSON.stringify(dbFile);

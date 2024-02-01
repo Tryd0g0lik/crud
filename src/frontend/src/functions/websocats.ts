@@ -8,9 +8,13 @@ export class WSocket {
       console.warn("[WebSocket]: Server was OPEN: ", this.socket.readyState);
       this.onSend;
     });
-    this.socket.addEventListener("message", (e: Event) => {
+    this.socket.addEventListener("message", (e: any) => {
       console.warn("[WebSocket]: Server was MESSAGE: ", this.socket.readyState);
-      console.warn("[WebSocket]: Server was e.MESSAGE: ", e);
+      console.warn("[WebSocket]: Server was e.MESSAGE: ", e.data as string);
+      let mess = e.data as string;
+      // mess = mess;
+      localStorage.setItem("data", mess);
+      console.log("[WebSocket] Sendig into LocalStorage");
     });
     this.socket.addEventListener("close", (e: any) => {
       e.wasClean === true ? console.warn("[WebSocket]: Server was CLOSE: ", this.socket.readyState) : null;

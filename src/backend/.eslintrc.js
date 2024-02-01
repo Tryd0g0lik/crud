@@ -15,6 +15,9 @@ module.exports = {
       "ts": true
     }
   },
+  "rules": {
+    "@typescript-eslint/no-unsafe-return": "off"
+  }
   // "plugins": [
   //   "eslint-plugin-typescript",
   // ],

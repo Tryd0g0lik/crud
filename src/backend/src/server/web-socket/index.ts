@@ -8,15 +8,30 @@ module.exports = (wss: any, WS: any): any => {
     ws.on("message", (mess: string): void => {
       // const url = req.url.slice(0);
       let messJson = JSON.parse(mess);
+      const ind = keys.indAdd();
+      console.log("[IND: ", ind);
       for (let line in messJson) {
-        console.log("[messJson.line]: ", messJson.line, "line: ", line, "messJson: ", messJson);
-        console.log("[messJson[line]]: ", messJson[line], ", Object.entries: ", Object.entries(messJson), ", messJson: ", messJson);
+        console.log("[line.length]: ", (messJson[line]).length);
         if ((messJson[line]).length > 0) {
-          const ind = keys.indAdd();
+
           if ((line.includes("data")) && ((typeof ind).includes("string"))) {
             JSON.stringify(dbFile);
-            // dbFile.line.push({ messJson.line[ind] });
-            WS;
+            console.log("[dbFile]: ", (dbFile as any)[line]);
+            console.log("[messJson]: ", (messJson as any)[line]);
+            console.log("[IND 2: ", ind);
+            // let newObj: Record<string, Record<any, string>>[(ind as string)] = (messJson[line][0] as Record<any, string>);
+            // newObj[(ind as string)] = messJson[line][0];
+
+            const newObj = { "key": (ind as string), "textarea": (messJson[line][0]["textarea"] as string) };
+            console.log("[newObj]: ", newObj);
+            (dbFile as any)["data"].push(newObj);
+            wss.clients.forEach((client: any) => {
+              if ((client === ws) && (client.readyState === WS.OPEN)) {
+                const dbFileSTR = JSON.stringify(dbFile);
+                client.send(dbFileSTR);
+                console.log("The  dbFile has been sended to the front", ". dbFile: ", dbFile);
+              }
+            })
           }
         }
       }

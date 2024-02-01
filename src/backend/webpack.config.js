@@ -19,12 +19,19 @@ module.exports = {
       ],
     }),
   ],
+
+
   module: {
     rules: [],
     exprContextCritical: false
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', 'json', '...'],
+    alias: { // https://webpack.js.org/configuration/resolve/#resolvealias
+      // "@socket": path.resolve(__dirname, "src/server/web-socket/index.ts"),
+      // "@Id": path.resolve(__dirname, "src/server/getId.ts"),
+      // "@dbase": path.resolve(__dirname, "src/server/db/dbase.json")
+    }
   },
 }
 

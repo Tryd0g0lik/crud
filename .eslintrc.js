@@ -30,7 +30,7 @@ module.exports = {
   ],
 
   "parserOptions": { // Configure parserOptions to enable support for other ECMAScript versions as well as JSX. https://typescript-eslint.io/linting/typed-linting/monorepos#one-tsconfigjson-per-package-and-an-optional-one-in-the-root
-    "project": true,
+    "project": ["./tsconfig.json"],
     "ecmaVersion": "ES2021",
     "sourceType": "module",
     "tsconfigRootDir": __dirname,

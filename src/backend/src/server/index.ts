@@ -4,14 +4,14 @@ import cors = require("@koa/cors");
 import logger = require("koa-logger");
 
 import WS = require("ws");
-import WSSoerverBody = require("./web-socket")
+import WSSoerverBody = require("./web-socket/index");
 
 const app = new Koa();
 app.use(logger());
 app.use(cors());
 
-const server = new http.createServer(app.callback());
-const wss = new WS.Server({ server });
+const server = new http.Server(app.callback());
+const wss = new WS.Server({ server: server });
 const PORT = (process.env.PORT != null) || String(7070);
 
 // app.use(async (ctx: any, next: any) => {
@@ -26,7 +26,7 @@ app.use(async (ctx: any): Promise<void> => {
   console.log("ctx.status", ctx.status);
 });
 
-WSSoerverBody(wss, WS);
+(WSSoerverBody as any)(wss, WS);
 server.listen(PORT, () => {
   console.log("[serve: Server has been started.] ");
-})
+});

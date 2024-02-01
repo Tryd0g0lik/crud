@@ -6,17 +6,18 @@
     "outDir": "../../dist/server",
     "module": "CommonJS",
     "allowJs": false,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",
     "directory",
-    "dist"
+    "dist",
+    "**/db"
   ],
   "files": [
     ".\\src\\server\\index.ts",
-    ".\\src\\server\\web-socket\\index.ts",
-    ".\\src\\server\\getid.ts"
+    ".\\src\\server\\web-socket\\index.ts"
   ]
   // 
   // "include": [

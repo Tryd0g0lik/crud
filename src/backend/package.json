@@ -11,11 +11,11 @@
     "yarn": ">=1.22.21"
   },
   "dependencies": {
+    "@types/koa__cors": "^5.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "package.json": "^2.0.1"
   },
   "devDependencies": {
-    "@koa/cors": "^5.0.0",
     "@types/koa-logger": "^3.1.5",
     "@types/uuid": "^9.0.8",
     "@webpack-cli/generators": "^3.0.7",

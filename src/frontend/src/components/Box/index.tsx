@@ -6,7 +6,7 @@ import "./Box.css";
  * `Str` from the `intarface.ts`
  * `Classname` from the `intarface.ts`
  * `Name` from the `intarface.ts`
- * 
+ *
  * @param `props`:`Str` `{ classname:string, name:string, Call:  (classnameCall: Classname, nameCall: Name) => React.JSX.Element, classnameCall:string, nameCall:string }`
  * @returns `<div className={classname}> {Call((classnameCall as string), (nameCall as string))}? {name} </div>`
  */
@@ -15,15 +15,15 @@ export default function BoxiesFC(props: Str): JSX.Element {
   if (Call !== undefined) {
     return (
       <div className={classname}>
-        {Call((classnameCall as string), (nameCall as string))}
+        {Call((classnameCall!), (nameCall as string))}
         {name}
       </div>
-    )
+    );
   } else {
     return (
       <div className={classname}>
         {name}
       </div>
-    )
+    );
   }
 }

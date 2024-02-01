@@ -22,7 +22,13 @@ module.exports = (wss: any, WS: any): any => {
             // let newObj: Record<string, Record<any, string>>[(ind as string)] = (messJson[line][0] as Record<any, string>);
             // newObj[(ind as string)] = messJson[line][0];
 
-            const newObj = { "key": (ind as string), "textarea": (messJson[line][0]["textarea"] as string) };
+            // const newObj = { "key": (ind as string), "textarea": (messJson[line][0]["textarea"] as string) };
+            const k = Object.keys(messJson[line][0]);
+            let o: Record<string, string> = {};
+            o[k[0]] = (messJson[line][0]["textarea"] as string);
+            let newObj: Record<string, any> = {};
+            const strInd = ind as string;
+            newObj[strInd] = o;
             console.log("[newObj]: ", newObj);
             (dbFile as any)["data"].push(newObj);
             wss.clients.forEach((client: any) => {

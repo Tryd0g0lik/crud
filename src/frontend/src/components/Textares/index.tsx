@@ -1,5 +1,7 @@
 import React, { JSX, MouseEventHandler, useEffect, useState, useCallback } from "react";
 import { WSocket } from "../../functions/websocats.ts";
+import BoxiesFC from "../Box/index.tsx";
+import ButtonFC from "../Button/index.tsx";
 import "./Textarea.css";
 interface Child {
   children: JSX.Element
@@ -17,6 +19,37 @@ export default function TextFC({ children }: Child): JSX.Element {
     }
     const sendersStr = { open: [], data: [{ textarea: str }], removes: [] };
     ws.onSend = sendersStr;
+    /** Получаем JSON в формате строка */
+    ws.public = (strjson: string): any => {
+      if (strjson.length < 15) {
+        return setTimeout(() => {
+          ws.public(strjson);
+        }, 1500);
+      };
+
+      const dataJSON = JSON.parse(strjson) as Record<any, any>;
+      const arr = Array.from(Object.entries(dataJSON));
+      // debugger;
+      const div = document.querySelector(".content");
+      if ((div === null) || (div === undefined)) {
+        return null;
+      }
+      [arr[1]].forEach(([ind, context]) => {
+        // debugger;
+        for (let i = 0; i < context.length; i++) {
+          div.innerHTML += `<div class="box" nam-key="${Object.keys((context[i] as Record<string, any>))[0]}"> ${Object.values((context[i] as Record<string, any>))[0].textarea}<div class="unmounting"><button type="submit"></button></div></div>`;
+          // debugger;
+        }
+      });
+      // return (<>
+      //   {
+      //     ([arr[1]] as any[]).map(([ind, context]) => (
+      //       <div key={ind}>{context}</div>
+      //     ))
+      //   };
+      // </>
+      // );
+    };
   }
 
   /**
@@ -55,7 +88,7 @@ export default function TextFC({ children }: Child): JSX.Element {
    * обработчик нажатой кнопки для отправки textarea на сервер
    */
   const handlerSendClick = (): void => {
-    Ws("ws://localhost:7000");
+    Ws("ws://localhost:7070");
   };
 
   useEffect(() => {

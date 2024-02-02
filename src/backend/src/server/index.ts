@@ -28,5 +28,5 @@ app.use(async (ctx: any): Promise<void> => {
 
 (WSSoerverBody as any)(wss, WS);
 server.listen(PORT, () => {
-  console.log("[serve: Server has been started.] ");
+  console.log("[serve: Server has been started.]: ", PORT);
 });

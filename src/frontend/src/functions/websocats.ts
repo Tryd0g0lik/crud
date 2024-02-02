@@ -15,6 +15,7 @@ export class WSocket {
       // mess = mess;
       localStorage.setItem("data", mess);
       console.log("[WebSocket] Sendig into LocalStorage");
+      this.public(mess);
     });
     this.socket.addEventListener("close", (e: any) => {
       e.wasClean === true ? console.warn("[WebSocket]: Server was CLOSE: ", this.socket.readyState) : null;
@@ -38,4 +39,14 @@ export class WSocket {
     this.socket.send(sendersStr);
     return this.handlers;
   }
+  /**
+   * Переписываем базовую версию функции.
+   * Запускаем в "this.socket.addEventListener(....)"
+   * Функция должна получить данные из "localStorage"
+   * После публикуем на decktope
+   * @returns ...
+   */
+  public = (strjson: string): any => {
+    return "here is your function for publics of the server datas" + strjson;
+  };
 }

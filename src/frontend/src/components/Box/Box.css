@@ -7,4 +7,9 @@
 border: 1px solid #000;
   text-align: center;
   position: relative;
+  margin-left: 5%;
+  }
+  
+  .box:first-of-type {
+    margin-left: 0;
 }

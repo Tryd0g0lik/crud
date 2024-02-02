@@ -31,11 +31,13 @@ module.exports = (wss: any, WS: any): any => {
             newObj[strInd] = o;
             console.log("[newObj]: ", newObj);
             (dbFile as any)["data"].push(newObj);
+            const dbFileSTR = JSON.stringify(dbFile);
+            console.log("[dbFileSTR]: ", dbFileSTR);
             wss.clients.forEach((client: any) => {
               if ((client === ws) && (client.readyState === WS.OPEN)) {
-                const dbFileSTR = JSON.stringify(dbFile);
+
                 client.send(dbFileSTR);
-                console.log("The  dbFile has been sended to the front", ". dbFile: ", dbFile);
+                console.log("The  dbFile has been sended to the front", ". dbFile: ", dbFileSTR);
               }
             })
           }

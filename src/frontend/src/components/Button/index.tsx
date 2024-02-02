@@ -2,7 +2,7 @@ import React, { JSX, useEffect } from "react";
 import "./Button.css";
 import { Str } from "../intarfaces.ts";
 
-export default function ButtonFC({ classname, name }: Str): JSX.Element {
+export default function ButtonFC({ classname, name, ind }: Str): JSX.Element {
   useEffect(() => {
     const handler = (e: MouseEvent): void => {
       const divTarget = (e.target as HTMLDivElement);
@@ -18,9 +18,9 @@ export default function ButtonFC({ classname, name }: Str): JSX.Element {
         (divUnmounting as HTMLDivElement).removeEventListener("click", handler);
       });
     };
-  });
+  }, [ind]);
   return (
-    <div className={classname}>
+    <div key={ind} className={classname}>
       <button type="submit">{name}</button>
     </div>
   );

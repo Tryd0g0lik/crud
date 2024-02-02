@@ -10,9 +10,12 @@ export default function AppFC(): JSX.Element {
       <HeadFC name={"Notes"} classname={"h"} classnameCall={"update-button"} nameCall={""} /* заголовок с кнопкой для обновления */
         Call={(cnameCall: string, nameCall: string) => <ButtonFC classname={cnameCall} name={nameCall} />} />
       <div className="content">
-        < BoxiesFC name="сюда вставляем текст" classname="box" classnameCall="unmounting" /* контейнер с кнопкой для закрытия */
-          Call={(cnameCall: string, nameCall: string) => <ButtonFC classname={cnameCall} name={nameCall} />
-          } />
+        {/* < BoxiesFC name="сюда вставляем текст" classname="box" classnameCall="unmounting" /* контейнер с кнопкой для закрытия  */}
+        {/* Call={(cnameCall: string, nameCall: string) => <ButtonFC classname={cnameCall} name={nameCall} /> */}
+        {/* } /> */}
+        < BoxiesFC name="сюда вставляем текст" classname="box">
+          <ButtonFC classname="unmounting" name="" />
+        </BoxiesFC>
       </div>
       <div className="h3">
         <h3>New note</h3>

@@ -29,4 +29,9 @@ export interface Str {
   classnameCall?: string
   nameCall?: string
   Call?: (classnameCall: Classname, nameCall: Name) => React.JSX.Element
+  children?: JSX.Element
+}
+
+export interface Child {
+  children: JSX.Element
 }

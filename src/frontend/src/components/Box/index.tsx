@@ -11,11 +11,12 @@ import "./Box.css";
  * @returns `<div className={classname}> {Call((classnameCall as string), (nameCall as string))}? {name} </div>`
  */
 export default function BoxiesFC(props: Str): JSX.Element {
-  const { classname, name, Call, classnameCall, nameCall } = { ...props };
-  if (Call !== undefined) {
+  // const { classname, name, Call, classnameCall, nameCall } = { ...props };
+  const { classname, name, children } = { ...props };
+  if (children !== undefined) {
     return (
       <div className={classname}>
-        {Call(classnameCall, nameCall)}
+        {children}
         {name}
       </div>
     );

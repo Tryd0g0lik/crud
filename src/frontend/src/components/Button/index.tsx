@@ -12,13 +12,12 @@ export default function ButtonFC({ classname, name }: Str): JSX.Element {
       };
     };
     const divUnmounting = document.querySelector(".unmounting"); // удаляем контейнер
-    if ((divUnmounting !== null) || (divUnmounting !== undefined)) {
+    if ((divUnmounting !== null) && (divUnmounting !== undefined)) {
       (divUnmounting as HTMLDivElement).addEventListener("click", handler);
+      return (() => {
+        (divUnmounting as HTMLDivElement).removeEventListener("click", handler);
+      });
     };
-
-    return (() => {
-      (divUnmounting as HTMLDivElement).removeEventListener("click", handler);
-    });
   });
   return (
     <div className={classname}>

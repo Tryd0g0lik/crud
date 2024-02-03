@@ -1,4 +1,4 @@
-import React, { JSX, useEffect, useState } from "react";
+import React, { JSX, useCallback, useEffect, useState, } from "react";
 import "./App.css";
 import HeadFC from "./components/Header/index.tsx";
 import ButtonFC from "./components/Button/index.tsx";
@@ -6,16 +6,18 @@ import BoxiesFC from "./components/Box/index.tsx";
 import TextFC from "./components/Textares/index.tsx";
 import { Name, Str } from "./components/intarfaces.ts";
 let oldData: string = "";
+let listInit = [] as any[];
 
 export default function AppFC(): JSX.Element {
-  const [arr, setArr] = useState([]);
+  const [arr, setArr] = useState(listInit);
+
   const handlerTextarea = (datas: Name) => {
     const arrJson = JSON.parse(datas);
     const dataArr = arrJson.data;
     const newArr = (dataArr).slice();
     setArr(newArr);
   };
-
+  const updateData = useCallback(handlerTextarea, [arr]);
   useEffect(() => {
     const hadlerGetLStorage = () => {
       const lStorage = localStorage.getItem("data");
@@ -28,7 +30,10 @@ export default function AppFC(): JSX.Element {
       }
 
       const datas = lStorage.slice(0);
-      handlerTextarea(datas);
+      oldData = lStorage.slice(0);
+      listInit = JSON.parse(datas);
+
+      updateData(datas);
     };
     const divBittonSend = document.querySelector(".textarea .send");
     if (divBittonSend === null || divBittonSend === undefined) {
@@ -42,7 +47,7 @@ export default function AppFC(): JSX.Element {
       //   hadlerGetLStorage();
       // });
     };
-  }, []);
+  }, [arr]);
   return (
     <>
       <HeadFC name={"Notes"} classname={"h"} classnameCall={"update-button"} nameCall={""} /* заголовок с кнопкой для обновления */

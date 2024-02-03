@@ -4,6 +4,7 @@ import { Str } from "../intarfaces.ts";
 import { WSocket } from "../../functions/websocats.ts";
 
 export default function ButtonFC({ classname, name, ind }: Str): JSX.Element {
+  try {
   useEffect(() => {
     const handler = (e: MouseEvent): void => {
       const divTarget = (e.target as HTMLDivElement);
@@ -14,7 +15,8 @@ export default function ButtonFC({ classname, name, ind }: Str): JSX.Element {
         if ((uniqueInd !== null) && (uniqueInd !== undefined)) {
           divParent.remove();
           ws.onRemove = uniqueInd;
-          setTimeout(() => ws.close, 1000);
+          ws.onClose();
+
         };
 
       };
@@ -25,13 +27,20 @@ export default function ButtonFC({ classname, name, ind }: Str): JSX.Element {
         (divUnmountingArray[i] as HTMLDivElement).addEventListener("click", handler);
       }
     };
-    return (() => {
-      // (divUnmountingArray[i] as HTMLDivElement).removeEventListener("click", handler);
-    });
+    return () => {
+      for (let i = 0; i < divUnmountingArray.length; i++) {
+        // if ((divUnmountingArray[i] !== null) && (divUnmountingArray[i] !== undefined)) {
+        (divUnmountingArray[i] as HTMLDivElement).removeEventListener("click", handler);
+        // }
+      }
+    };
   }, [ind]);
+  } catch (e) {
+    console.warn("[ERROR] is finded 5");
+  }
 
   return (
-    <div key={ind} className={classname}>
+    <div className={classname}>
       <button type="submit">{name}</button>
     </div>
   );

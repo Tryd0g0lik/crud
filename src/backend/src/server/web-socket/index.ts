@@ -61,7 +61,7 @@ module.exports = (wss: any, WS: any): any => {
                  //  newDbFile.push((dbFile["data"].slice(0))[0]);
                  null;
                }
-               if ((ind + 1) < dbFile["data"].length) {
+               if ((ind + 1) <= dbFile["data"].length - 1) {
                  newDbFile.push((dbFile["data"].slice(ind + 1))[0]);
                  
                }

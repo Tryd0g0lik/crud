@@ -40,7 +40,6 @@
   "description": "0.4.2 - IDE fields; 0.4.1 - There is DELETE function for a position remove;",
   "scripts": {
     "build": "webpack --mode=production --config ./webpack.config.js",
-    "build:dev2": "webpack --mode=development --config ./webpack.config.js",
     "build:dev": "yarn tsc && webpack",
     "build:prod": "webpack ",
     "build:render": "yarn add package.json && npx tsc && yarn tsc && webpack",

@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "lint": "eslint . ",
-    "build:dev": "webpack --mode=development --config ./webpack.config.js",
+    "build:dev": "webpack --mode=development --config ./webpack.config.js && yarn workspaces build:dev",
     "build": "webpack --mode=production --config ./webpack.config.js",
     "server": "webpack server --mode=development",
     "start": "yarn workspace crud-backend build:dev && yarn workspace crud-backend start"

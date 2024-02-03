@@ -16,7 +16,8 @@
     "react-styleguidist": "^13.1.1"
   },
   "scripts": {
-    "server": "webpack server --mode=development"
+    "server": "webpack server --mode=development",
+    "build:dev": "webpack --mode=development --config ./webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",

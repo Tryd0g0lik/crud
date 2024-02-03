@@ -1,7 +1,10 @@
 import { Send } from "./intaerfaces.ts";
+import { Name } from "../components/intarfaces.ts";
 export class WSocket {
   socket: Record<any, any>;
   handlers: { open: any[], data: any[], removes: any[] };
+	key: Name;
+	close: any;
   constructor(url: string) {
     this.socket = new WebSocket(url);
     this.socket.addEventListener("open", () => {
@@ -49,4 +52,7 @@ export class WSocket {
   public = (strjson: string): any => {
     return "here is your function for publics of the server datas" + strjson;
   };
+	set onRemove(key: string) {
+		this.handlers.removes.push(key);
+	}
 }

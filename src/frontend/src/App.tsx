@@ -14,9 +14,10 @@ export default function AppFC(): JSX.Element {
   const handlerTextarea = (datas: Name) => {
     const arrJson = JSON.parse(datas);
     const dataArr = arrJson.data;
-    const newArr = (dataArr).slice();
+    const newArr = (dataArr).slice()
     setArr(newArr);
   };
+
   const updateData = useCallback(handlerTextarea, [arr]);
   useEffect(() => {
     const hadlerGetLStorage = () => {
@@ -24,15 +25,15 @@ export default function AppFC(): JSX.Element {
 
       if ((lStorage === null) || (lStorage === undefined) ||
         (oldData.includes(lStorage))) {
-        return setTimeout(() => {
+        setTimeout(() => {
           hadlerGetLStorage();
         }, 1500);
+        return;
       }
 
       const datas = lStorage.slice(0);
       oldData = lStorage.slice(0);
       listInit = JSON.parse(datas);
-
       updateData(datas);
     };
     const divBittonSend = document.querySelector(".textarea .send");
@@ -42,11 +43,7 @@ export default function AppFC(): JSX.Element {
     (divBittonSend as HTMLDivElement).addEventListener("mousedown", () => {
       hadlerGetLStorage();
     });
-    return () => {
-      // (divBittonSend as HTMLDivElement).removeEventListener("mousedown", () => {
-      //   hadlerGetLStorage();
-      // });
-    };
+    return;
   }, [arr]);
   return (
     <>

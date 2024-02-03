@@ -7,35 +7,44 @@ import TextFC from "./components/Textares/index.tsx";
 import { Name, Str } from "./components/intarfaces.ts";
 let oldData: string = "";
 let listInit = [] as any[];
-
+let indUP:number = 0;
 export default function AppFC(): JSX.Element {
-  const [arr, setArr] = useState(listInit);
+  const [arr, setArr] = useState([]);
 
   const handlerTextarea = (datas: Name) => {
     const arrJson = JSON.parse(datas);
     const dataArr = arrJson.data;
-    const newArr = (dataArr).slice()
+    const newArr = (dataArr).slice() 
     setArr(newArr);
   };
+  let dataUP: any;
+  
+  const hadlerGetLStorage = () => {
+    console.log("[updateButton]");
+    const lStorage = localStorage.getItem("data");
+   
+    // debugger;
+    if ((lStorage === null) || (lStorage === undefined) ||
+      (oldData.includes(lStorage))) {
+      dataUP = setTimeout(() => {
+        hadlerGetLStorage();
+        indUP++;
+        if (indUP >= 10) {
+          clearTimeout(dataUP);
+        }
+      }, 1500);
+      return;
+    }
+    indUP++
+    const datas = lStorage.slice(0);
+    oldData = lStorage.slice(0);
+    listInit = JSON.parse(datas)["data"];
+    handlerTextarea(datas);
+  };
+  // const updateData = useCallback(handlerTextarea, []);
 
-  const updateData = useCallback(handlerTextarea, [arr]);
-  useEffect(() => {
-    const hadlerGetLStorage = () => {
-      const lStorage = localStorage.getItem("data");
-
-      if ((lStorage === null) || (lStorage === undefined) ||
-        (oldData.includes(lStorage))) {
-        setTimeout(() => {
-          hadlerGetLStorage();
-        }, 1500);
-        return;
-      }
-
-      const datas = lStorage.slice(0);
-      oldData = lStorage.slice(0);
-      listInit = JSON.parse(datas);
-      updateData(datas);
-    };
+  useEffect(() => {   
+    clearTimeout(dataUP);
     const divBittonSend = document.querySelector(".textarea .send");
     if (divBittonSend === null || divBittonSend === undefined) {
       return;
@@ -43,8 +52,25 @@ export default function AppFC(): JSX.Element {
     (divBittonSend as HTMLDivElement).addEventListener("mousedown", () => {
       hadlerGetLStorage();
     });
-    return;
+      return () => {
+        (divBittonSend as HTMLDivElement).removeEventListener("mousedown", () => {
+          hadlerGetLStorage();
+        });
+      }
+
   }, [arr]);
+  useEffect(() => { 
+    const updateButton = document.querySelector(".update-button");
+    if ((updateButton === null) && (updateButton === undefined)) {
+      return;
+    }
+    console.log("[updateButton]", updateButton);
+    (updateButton as HTMLDivElement).addEventListener("mousedown", hadlerGetLStorage);
+    return () => {
+      (updateButton as HTMLDivElement).removeEventListener("mousedown", hadlerGetLStorage);
+    }
+  }, [arr]);
+  
   return (
     <>
       <HeadFC name={"Notes"} classname={"h"} classnameCall={"update-button"} nameCall={""} /* заголовок с кнопкой для обновления */
@@ -52,8 +78,12 @@ export default function AppFC(): JSX.Element {
       <div className="content">
         {
           arr.map((data: any) => (
-            < BoxiesFC ind={Object.entries(data)[0][0] as string} name={(Object.entries(data)[0][1] as Record<string, string>).textarea} classname="box" >
-              <ButtonFC ind={Object.entries(data)[0][0] as string} classname="unmounting" name="" />
+
+            < BoxiesFC key={Array.from(Object.entries(data))[0][0] as string}
+              ind={Array.from(Object.entries(data))[0][0] as string}
+              name={(Array.from(Object.entries(data))[0][1] as Record<string, string>).textarea}
+              classname="box" >
+              <ButtonFC classname="unmounting" name="" />
             </BoxiesFC>
           )
           )
@@ -63,7 +93,7 @@ export default function AppFC(): JSX.Element {
         <h3>New note</h3>
       </div>
       <TextFC>
-        <ButtonFC classname="send" name={""} />
+        <ButtonFC classname={"send"} name={""} />
       </TextFC>
     </>
   );

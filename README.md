@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/0l54oky23y0c4fie/branch/master?svg=true)](https://ci.appveyor.com/project/Tryd0g0lik/crud/branch/master)
+
 ## Базовый CRUD без обновления при работе с HTTP.
 
 `Backend` свмописный. Основан на `Koa` и `webSocket`

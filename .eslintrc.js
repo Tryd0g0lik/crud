@@ -1,5 +1,6 @@
 module.exports = {
   "root": true,
+  "files": ['**/*.{ts,tsx}'],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -92,7 +93,8 @@ module.exports = {
     "prefer-const": "off",
     "no-useless-escape": "off",
     "@typescript-eslint/consistent-type-imports": "off",
-    "@typescript-eslint/no-extra-semi": "off"
+    "@typescript-eslint/no-extra-semi": "off",
+    "react/jsx-key": ["extends", { "warnOnDuplicates": true }]
   },
   "overrides": [
     // {

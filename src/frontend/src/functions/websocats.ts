@@ -18,7 +18,7 @@ export class WSocket {
       // mess = mess;
       localStorage.setItem("data", mess);
       console.log("[WebSocket] Sendig into LocalStorage");
-      this.public(mess);
+      this.onClose();
     });
     this.socket.addEventListener("close", (e: any) => {
       e.wasClean === true ? console.warn("[WebSocket]: Server was CLOSE: ", this.socket.readyState) : null;
@@ -29,12 +29,12 @@ export class WSocket {
       removes: []
     };
   }
-
+  onClose() {
+    this.socket.close()
+  }
   set onSend({ ...senders }: Send) {
-    // const transactionKeys = ["open", "data", "removes"];
     const s = Array.from(Object.entries({ ...senders }));
     this.handlers = { ...senders };
-    console.log("[set onSend]: ", s);
   }
 
   get onSend(): Send {

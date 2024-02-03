@@ -21,6 +21,7 @@ export type Name = string;
  * @param: `{name?: string}`
  * @param: `{datas?: string}`
  * @param: `{ind?: string}`
+ * @param: `{key?: string}`
  * @param: `{classname?: string}`
  * @param: `{classnameCall?: string}`
  * @param: `{nameCall?: string}`
@@ -30,6 +31,7 @@ export type Name = string;
 export interface Str {
   name?: string
   ind?: string
+  key?: string
   datas?: string
   classname?: string
   classnameCall?: string

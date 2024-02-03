@@ -71,22 +71,31 @@ module.exports = (wss: any, WS: any): any => {
                console.log("[REMOVES dbFileSTR]: ", dbFileSTR);
                wss.clients.forEach((client: any) => {
                  if ((client === ws) && (client.readyState === WS.OPEN)) {
-
+                   console.log("[SERVER]: The message is sending for client: ", dbFileSTR);
                    client.send(dbFileSTR);
                    console.log("The  dbFile has been sended after a REMOVES", ". dbFile: ", dbFileSTR);
                  }
                })
                return
-             }
-            
+             } 
               // console.log("[REMOVES]: data ", dbFile["data"].key);  
             });
             // console.log("[REMOVES]: data ", dbFile["data"].key);
             
             // (dbFile as any)["data"].imdexOf(dbFile["data"][messJson[line][0]])
-          }
+          } 
+
         }
       }
+      /* обновлениею Если был запрос, но код "for (let line in messJson)" ни чего не нашел */
+          wss.clients.forEach((client: any) => {
+            const dbFileSTR = JSON.stringify(dbFile);
+            if ((client === ws) && (client.readyState === WS.OPEN)) {
+              console.log("[SERVER]: The message is sending for client: ", dbFileSTR);
+              client.send(dbFileSTR);
+              console.log("The  dbFile has been sended after a REMOVES", ". dbFile: ", dbFileSTR);
+            }
+          })
     });
   });
   return result;

@@ -13,18 +13,20 @@ import "./Box.css";
 export default function BoxiesFC(props: Str): JSX.Element {
   // const { classname, name, Call, classnameCall, nameCall } = { ...props };
   const { classname, name, children, ind } = { ...props };
+
   if ((children !== undefined) && (ind !== undefined)) {
     return (
-      <div key={ind} data-ind={ind} className={classname}>
+      <div data-ind={ind} className={classname}>
         {children}
         {name}
       </div>
     );
   } else {
     return (
-      <div key={ind} className={classname}>
+      <div className={classname}>
         {name}
       </div>
     );
   }
+
 }

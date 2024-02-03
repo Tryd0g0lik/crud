@@ -13,4 +13,5 @@ src/index.ts
 ./styleguide
 archive
 .cache
+**/backend
 

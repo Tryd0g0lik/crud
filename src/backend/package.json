@@ -1,6 +1,7 @@
 {
   "name": "crud-backend",
-  "version": "0.4.1",
+  "version": "0.1.0",
+  "descriptions": "ДЕлаем сурвер и WebSocket на сервер",
   "main": "./src/server/index.ts",
   "author": " Tryd0g0lik",
   "license": "MIT",
@@ -10,16 +11,16 @@
     "yarn": ">=1.22.21"
   },
   "dependencies": {
+    "@types/koa__cors": "^5.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "package.json": "^2.0.1"
   },
   "devDependencies": {
-    "@koa/cors": "^5.0.0",
     "@types/koa-logger": "^3.1.5",
+    "@types/uuid": "^9.0.8",
     "@webpack-cli/generators": "^3.0.7",
     "bufferutil": "^4.0.7",
     "copy-webpack-plugin": "^11.0.0",
-    "koa": "^2.14.2",
     "koa-better-router": "^2.1.1",
     "koa-body": "^6.0.1",
     "koa-logger": "^3.2.1",

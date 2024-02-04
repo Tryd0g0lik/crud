@@ -1,10 +1,10 @@
-import http = require("http");
-import Koa = require("koa");
-import cors = require("@koa/cors");
-import logger = require("koa-logger");
+const http = require("http");
+const Koa = require("koa");
+const cors = require("@koa/cors");
+const logger = require("koa-logger");
 
-import WS = require("ws");
-import WSSoerverBody = require("./web-socket/index");
+const WS = require("ws");
+const WSSoerverBody = require("./web-socket/index");
 
 const app = new Koa();
 app.use(logger());

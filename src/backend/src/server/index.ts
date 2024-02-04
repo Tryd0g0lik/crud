@@ -12,7 +12,7 @@ app.use(cors());
 
 const server = new http.Server(app.callback());
 const wss = new WS.Server({ server: server });
-const PORT = (process.env.PORT != null) || String(7070);
+const PORT = process.env.PORT || String(7070);
 
 // app.use(async (ctx: any, next: any) => {
 //   ctx.set('Access-Control-Allow-Origin', '*');

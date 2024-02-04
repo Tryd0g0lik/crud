@@ -13,7 +13,6 @@
   "dependencies": {
     "@types/koa__cors": "^5.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "koa": "^2.15.0",
     "package.json": "^2.0.1",
     "ws": "^8.15.1"
   },
@@ -23,6 +22,7 @@
     "@webpack-cli/generators": "^3.0.7",
     "bufferutil": "^4.0.7",
     "copy-webpack-plugin": "^11.0.0",
+    "koa": "^2.15.0",
     "koa-better-router": "^2.1.1",
     "koa-body": "^6.0.1",
     "koa-logger": "^3.2.1",

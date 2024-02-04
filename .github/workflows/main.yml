@@ -35,7 +35,7 @@ jobs:
         run: yarn install
           
       - name: Build-All
-        run: yarn run build:dev
+        run: yarn workspaces build:dev
 
 
       - name: Setup Pages

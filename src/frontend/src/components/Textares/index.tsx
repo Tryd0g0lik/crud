@@ -54,7 +54,7 @@ export default function TextFC({ children }: Child): JSX.Element {
    * обработчик нажатой кнопки для отправки textarea на сервер
    */
   const handlerSendClick = (): void => {
-    Ws("ws://localhost:7070");
+    Ws("https://crud-bis1.onrender.com");
   };
 
   useEffect(() => {

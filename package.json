@@ -1,4 +1,5 @@
 {
+  
   "name": "crud",
   "main": "./src/index.ts",
   "version": "0.1.0",
@@ -20,10 +21,11 @@
   ],
   "scripts": {
     "lint": "eslint . ",
-    "build:dev": "webpack --mode=development --config ./webpack.config.js && yarn workspaces build:dev",
+    "build:dev": "yarn workspaces build:dev",
     "build": "webpack --mode=production --config ./webpack.config.js",
     "server": "webpack server --mode=development",
-    "start": "yarn workspace crud-backend build:dev && yarn workspace crud-backend start"
+    "start": "yarn workspace crud-backend build:dev && yarn workspace crud-backend start",
+    "build:render": "yarn workspace crud-backend run build:render"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^1.5.1",

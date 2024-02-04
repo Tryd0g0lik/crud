@@ -56,7 +56,7 @@ export default function AppFC(): JSX.Element {
     if ((updateButton !== null) && (updateButton !== undefined)) {
       (updateButton as HTMLDivElement).addEventListener("mousedown", () => {
         hadlerGetLStorage();
-        const ws = new WSocket("https://crud-bis1.onrender.com");
+        const ws = new WSocket("wss://crud-bis1.onrender.com");
         const sendersStr = { open: [], data: [], removes: [] };
         ws.onSend = sendersStr;
       });
@@ -74,7 +74,7 @@ export default function AppFC(): JSX.Element {
       const divTarget = (e.target as HTMLDivElement);
       const divParent = (divTarget.parentElement as HTMLDivElement).parentElement as HTMLDivElement;
       if (divParent.className.includes("box")) {
-        const ws = new WSocket("https://crud-bis1.onrender.com");
+        const ws = new WSocket("wss://crud-bis1.onrender.com");
         const uniqueInd = (divParent.dataset.ind as string).slice(0);
         if ((uniqueInd !== null) && (uniqueInd !== undefined)) {
           ws.onRemove = uniqueInd;

@@ -13,12 +13,11 @@
   "dependencies": {
     "@types/koa__cors": "^5.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "koa": "^2.15.0",
     "package.json": "^2.0.1",
     "ws": "^8.15.1"
-    
   },
   "devDependencies": {
-    "koa": "^2.15.0",
     "@types/koa-logger": "^3.1.5",
     "@types/uuid": "^9.0.8",
     "@webpack-cli/generators": "^3.0.7",
@@ -38,7 +37,6 @@
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.9.0"
-
   },
   "description": "0.4.2 - IDE fields; 0.4.1 - There is DELETE function for a position remove;",
   "scripts": {

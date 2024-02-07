@@ -9,12 +9,15 @@ module.exports = merge(webpackFront, {
   entry: './src/index.ts',
   // devtool: 'evel-'
   mode: 'none',
-
+  output: {
+    path: path.resolve(__dirname, './dist')
+  },
 
   module: {},
   plugins: [
     new CopyPlugin({
       patterns: [
+        { from: './.env', to: './', },
         { from: './public/manifest.json', to: './', },
         { from: './public/logo512.png', to: './', },
         { from: './public/logo192.png', to: './', }

@@ -8,8 +8,13 @@ import { WSocket } from "./functions/websocats.ts";
 let oldData: string = ""; /* старые данные для сравнения - поступили новые или нет */
 let listInit = [] as any[]; /* для статуса получаем новый массив и обновляем desctop */
 
+
 let indUP: number = 0;  /* для того чтоб закрыть setTimout */
 export default function AppFC(): JSX.Element {
+
+
+  let CRUD_URL = "wss://crud-f6i7.onrender.com";
+
   const [arr, setArr] = useState(listInit);
   let dataUP: any;
   
@@ -56,7 +61,7 @@ export default function AppFC(): JSX.Element {
     if ((updateButton !== null) && (updateButton !== undefined)) {
       (updateButton as HTMLDivElement).addEventListener("mousedown", () => {
         hadlerGetLStorage();
-        const ws = new WSocket("wss://crud-bis1.onrender.com");
+        const ws = new WSocket(CRUD_URL);
         const sendersStr = { open: [], data: [], removes: [] };
         ws.onSend = sendersStr;
       });
@@ -74,7 +79,7 @@ export default function AppFC(): JSX.Element {
       const divTarget = (e.target as HTMLDivElement);
       const divParent = (divTarget.parentElement as HTMLDivElement).parentElement as HTMLDivElement;
       if (divParent.className.includes("box")) {
-        const ws = new WSocket("wss://crud-bis1.onrender.com");
+        const ws = new WSocket(CRUD_URL);
         const uniqueInd = (divParent.dataset.ind as string).slice(0);
         if ((uniqueInd !== null) && (uniqueInd !== undefined)) {
           ws.onRemove = uniqueInd;

@@ -3,7 +3,10 @@ import { WSocket } from "../../functions/websocats.ts";
 import "./Textarea.css";
 import { Child } from "../intarfaces.ts";
 
+
 export default function TextFC({ children }: Child): JSX.Element {
+  let CRUD_URL = "wss://crud-f6i7.onrender.com";
+
   let str = "";
   const [code, setCode] = useState("");
   function Ws(url: string): void {
@@ -54,7 +57,7 @@ export default function TextFC({ children }: Child): JSX.Element {
    * обработчик нажатой кнопки для отправки textarea на сервер
    */
   const handlerSendClick = (): void => {
-    Ws("wss://crud-bis1.onrender.com");
+    Ws(CRUD_URL);
   };
 
   useEffect(() => {

@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@koa/cors": "^5.0.0",
     "copy-webpack-plugin": "^12.0.1",
     "package.json": "^2.0.1",
     "web-vitals": "^2.1.0"
@@ -22,7 +21,7 @@
     "build:dev": "webpack --mode=development --config ./webpack.config.js",
     "build": "webpack --mode=production --config ./webpack.config.js",
     "server": "webpack server --mode=development",
-    "start": "yarn workspace crud-backend build:dev && yarn workspace crud-backend start",
+    "start": "yarn build:dev && yarn workspaces run build:dev && yarn workspace crud-backend run start",
     "build:render": "yarn workspace crud-backend run build:render"
   },
   "devDependencies": {

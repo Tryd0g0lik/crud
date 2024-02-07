@@ -44,7 +44,7 @@
     "build": "webpack --mode=production --config ./webpack.config.js",
     "build:dev": "yarn tsc && webpack",
     "build:prod": "webpack ",
-    "build:render": "yarn add package.json && npx tsc && yarn tsc && webpack",
+    "build:render": "webpack",
     "watch": "webpack --watch",
     "start": "node ../../dist/server/index.js localhost 7070"
   },

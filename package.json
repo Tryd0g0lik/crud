@@ -22,7 +22,7 @@
     "build": "webpack --mode=production --config ./webpack.config.js",
     "server": "webpack server --mode=development",
     "start": "yarn build:dev && yarn workspaces run build:dev && yarn workspace crud-backend run start",
-    "build:render": "yarn workspace crud-backend run build:render"
+    "build:render": "yarn -W add package.json && yarn workspace crud-backend run package.json && yarn build:dev && yarn workspaces run build:dev && yarn workspace crud-backend run build:render"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^1.5.1",

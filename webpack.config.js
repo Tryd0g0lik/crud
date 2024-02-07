@@ -17,7 +17,6 @@ module.exports = merge(webpackFront, {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: './.env', to: './', },
         { from: './public/manifest.json', to: './', },
         { from: './public/logo512.png', to: './', },
         { from: './public/logo192.png', to: './', }
